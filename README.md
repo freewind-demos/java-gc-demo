@@ -3,16 +3,17 @@ Java GC Demo
 
 How to trigger and view the GC information.
 
-In IDEA:
---------
+-XX:+PrintGC
+------------
+
+打印出简单的GC信息。
 
 Run `Hello` with `VM Options`:
 
 - Show GC Log: `-XX:+PrintGC`, or alias `-verbose:gc`
 - Specify a small heap: `-Xmx10m`
 
-Read the Log
-------------
+You will see such log in console:
 
 ```
 [GC (System.gc())  3941K->664K(251392K), 0.0017948 secs]
@@ -25,6 +26,37 @@ Read the Log
 - 4: 本次GC的heap占用变成了664K，少了很多
 - 5: GC之后，Head的总容量
 - 6: 本次GC所花时间
+
+
+-XX:+PrintGCDetails
+-------------------
+
+打印出GC细节信息。
+
+Run `Hello` with `VM Options`:
+
+- Show GC Log: `-XX:+PrintGCDetails`
+- Specify a small heap: `-Xmx10m`
+
+You will see such log in console:
+
+```
+[GC (System.gc()) [PSYoungGen: 2180K->480K(2560K)] 2487K->803K(9728K), 0.0008510 secs] [Times: user=0.01 sys=0.00, real=0.00 secs]
+```
+
+TODO: Complete this next time when I need it.
+
+### Full GC
+
+```
+[Full GC (System.gc())
+    [PSYoungGen: 480K->0K(2560K)]
+    [ParOldGen: 323K->544K(7168K)] 803K->544K(9728K),
+    [Metaspace: 3330K->3330K(1056768K)], 0.0052894 secs]
+    [Times: user=0.02 sys=0.00, real=0.00 secs]
+```
+
+TODO: Complete this next time when I need it.
 
 Resources
 ---------
